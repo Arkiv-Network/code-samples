@@ -1,0 +1,14 @@
+[package]
+name = "rust_starter_project"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rand = "0.8"
+dotenvy = "0.15"
+dirs = "6.0"
+golem-base-sdk = { git = "https://github.com/Golem-Base/rust-sdk.git" }
+tokio = { version = "1", features = ["macros", "rt-multi-thread"] }
+futures = "0.3"
+tracing = { version = "0.1" }
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }

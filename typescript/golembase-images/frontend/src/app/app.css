@@ -1,0 +1,47 @@
+.main-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1em;
+  font-family: sans-serif;
+}
+
+h1 {
+  text-align: center;
+  color: #0056b3;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 3em 0;
+}
+
+.gallery-section {
+  margin-top: 2em;
+}
+
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5em;
+}
+
+.gallery-header h2 {
+  margin: 0;
+}
+
+.gallery-header button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #28a745;
+  color: white;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.gallery-header button:hover {
+  background-color: #218838;
+}

@@ -1,0 +1,48 @@
+{
+  "name": "@freckleface/golembase-js-transformations",
+  "version": "1.5.0",
+  "description": "A small library of JavaScript object transformations for golem-base",
+  "homepage": "https://github.com/frecklefacelabs/golembase-js-transformations#readme",
+  "bugs": {
+    "url": "https://github.com/frecklefacelabs/golembase-js-transformations/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frecklefacelabs/golembase-js-transformations.git"
+  },
+  "license": "ISC",
+  "author": "Freckleface Cogswell",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "typescript",
+    "golem",
+    "golem-base"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "build-and-start": "npm run build && npm run start",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "golem-base-sdk": "^0.1.16",
+    "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "@types/node": "^24.0.13",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "files": [
+    "dist"
+  ]
+}

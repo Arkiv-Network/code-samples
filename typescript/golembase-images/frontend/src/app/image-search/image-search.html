@@ -1,0 +1,20 @@
+<div class="search-container">
+  <h2>Search by Tag</h2>
+  <div class="search-bar">
+    <!-- [(ngModel)] creates a two-way binding to the searchTag property -->
+    <input 
+      type="text" 
+      [(ngModel)]="searchTag" 
+      placeholder="e.g., pets"
+      (keyup.enter)="onSearch()"
+    >
+    <button (click)="onSearch()">Search</button>
+  </div>
+
+  <!-- Pass the search results down to the gallery component -->
+  <app-thumbnail-gallery [ids]="searchResultIds"></app-thumbnail-gallery>
+
+  <!-- Show a message if a search was done but no results were found -->
+  @if (searchResultIds.length === 0 && searchPerformed) {
+    <p class="no-results-message">No results found for "{{ searchTag }}".</p>
+  }

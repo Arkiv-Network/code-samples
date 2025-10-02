@@ -1,0 +1,34 @@
+:host {
+  display: block;
+  font-family: sans-serif;
+}
+
+.gallery-container {
+  max-width: 1200px;
+  margin: 2em auto;
+  padding: 1em;
+  text-align: center;
+}
+
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px; /* The space between images */
+  margin-top: 1em;
+}
+
+.gallery-item img {
+  width: 100px; /* Fixed width */
+  height: 100px; /* Fixed height */
+  object-fit: contain; /* This makes sure the whole image fits inside the 100x100 box */
+  border-radius: 8px;
+  background-color: #f0f0f0; /* A placeholder color while images load */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer; /* Added to indicate the image is clickable */
+}
+
+.gallery-item img:hover {
+  transform: scale(1.05); /* Slightly enlarge images on hover */
+}

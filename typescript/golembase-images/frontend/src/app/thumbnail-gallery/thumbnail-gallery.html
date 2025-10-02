@@ -1,0 +1,18 @@
+<div class="gallery-container">
+  <!-- This @if now checks the 'ids' input property -->
+  @if (ids.length > 0) {
+    <div class="gallery-grid">
+      <!-- This @for now loops over the 'ids' input property -->
+      @for (id of ids; track id) {
+        <div class="gallery-item">
+          <img 
+            [src]="backendUrl + '/image/' + id" 
+            [alt]="'Image with ID ' + id"
+            (error)="onImageError($event)"
+            (click)="onImageClick(id)"
+          >
+        </div>
+      }
+    </div>
+  }
+</div>

@@ -1,0 +1,20 @@
+<div class="main-container">
+  <h1>Image Library</h1>
+  
+  <app-image-upload></app-image-upload>
+  
+  <hr>
+  
+  <app-image-search></app-image-search>
+  
+  <hr>
+
+  <div class="gallery-section">
+    <div class="gallery-header">
+      <h2>All Images</h2>
+      <button (click)="fetchInitialThumbnails()">Refresh Gallery</button>
+    </div>
+    <app-thumbnail-gallery [ids]="allThumbnailIds"></app-thumbnail-gallery>
+  </div>
+
+</div>

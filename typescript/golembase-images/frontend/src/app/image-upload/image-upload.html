@@ -1,0 +1,53 @@
+<div class="upload-container">
+  <h2>Upload an Image</h2>
+  <form (ngSubmit)="onUpload()" #uploadForm="ngForm" class="upload-form">
+    
+    <!-- File Input -->
+    <div class="form-group">
+      <label for="imageFile">Choose Image*</label>
+      <input 
+        type="file" 
+        id="imageFile" 
+        (change)="onFileSelected($event)" 
+        accept="image/*"
+        required
+      >
+    </div>
+
+    <!-- Filename Override -->
+    <div class="form-group">
+      <label for="filename">Filename (optional override)</label>
+      <input type="text" id="filename" name="filename" [(ngModel)]="filename">
+    </div>
+
+    <!-- Tags -->
+    <div class="form-group">
+      <label for="tags">Tags (comma-separated)*</label>
+      <input type="text" id="tags" name="tags" [(ngModel)]="tags" required>
+    </div>
+
+    <!-- Custom Annotations -->
+    <div class="form-group custom-tags-group">
+      <label>Optional Custom Annotations</label>
+      @for(annotation of customAnnotations; track $index) {
+        <div class="custom-tag-pair">
+          <input type="text" placeholder="Key {{$index + 1}}" name="custom_key_{{$index}}" [(ngModel)]="annotation.key">
+          <input type="text" placeholder="Value {{$index + 1}}" name="custom_value_{{$index}}" [(ngModel)]="annotation.value">
+        </div>
+      }
+    </div>
+
+    <!-- Upload Button -->
+    <button type="submit" [disabled]="!selectedFile">Upload</button>
+
+    <!-- Progress Bar and Messages -->
+    @if (uploadProgress !== null) {
+      <div class="progress-bar-container">
+        <div class="progress-bar" [style.width.%]="uploadProgress"></div>
+      </div>
+    }
+    @if (uploadMessage) {
+      <p class="message" [class.error]="isError">{{ uploadMessage }}</p>
+    }
+  </form>
+</div>
