@@ -1,0 +1,76 @@
+<div class="terminal-container">
+  <h1 class="title">Golem-base SQL Terminal</h1>
+  
+  <!-- App Name Input -->
+  <div class="form-group">
+    <label for="appName" class="input-label">App Name</label>
+    <input 
+      id="appName"
+      type="text"
+      [(ngModel)]="appName"
+      class="app-name-input"
+      placeholder="e.g., my-awesome-app-v1"
+      spellcheck="false"
+    />
+  </div>
+
+  <!-- SQL Input Area -->
+  <div class="form-group">
+    <label for="sqlQuery" class="input-label">SQL Query</label>
+    <textarea 
+      id="sqlQuery"
+      [(ngModel)]="sqlQuery"
+      class="sql-textarea" 
+      placeholder="Enter your SQL statements here..."
+      rows="8"
+      spellcheck="false"
+    ></textarea>
+  </div>
+  
+  <!-- Submit Button -->
+  <button (click)="onSubmit()" [disabled]="isLoading || !appName.trim()" class="submit-button">
+    {{ isLoading ? 'Executing...' : 'Execute SQL' }}
+  </button>
+  
+  <!-- Results Area -->
+  <div class="results-container" *ngIf="(results$ | async) as results">
+    <h2 class="results-title">Results</h2>
+    <div *ngIf="results.length > 0; else noResults" class="results-list">
+      
+      <!-- Loop through each result line -->
+      <div *ngFor="let line of results" class="result-item">
+        
+        <ng-container *ngIf="parseResultLine(line) as parsed">
+          
+          <!-- RENDER AS A TABLE IF JSON -->
+          <div *ngIf="parsed.isJson; else plainText" class="json-table-container">
+            <table class="json-table">
+              <tbody>
+                <!-- Loop through key-value pairs of the JSON object -->
+                <tr *ngFor="let item of parsed.data | keyvalue: originalOrder">
+                  <!-- Filter out the keys we don't want to display -->
+                  <ng-container *ngIf="item.key !== 'app' && item.key !== 'type' && item.key !== 'tablename'">
+                    <td class="json-key">{{ item.key }}</td>
+                    <td class="json-value">{{ item.value }}</td>
+                  </ng-container>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- RENDER AS PLAIN TEXT -->
+          <ng-template #plainText>
+            <div class="plain-text-result">{{ parsed.data }}</div>
+          </ng-template>
+
+        </ng-container>
+      </div>
+    </div>
+    
+    <ng-template #noResults>
+      <div class="no-results">
+        <p>No results to display. Execute a query to begin.</p>
+      </div>
+    </ng-template>
+  </div>
+</div>
